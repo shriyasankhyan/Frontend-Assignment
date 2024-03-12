@@ -4,6 +4,7 @@ import Logs from './components/Logs';
 import Metrics from './components/Metrics';
 import Storybook from './components/Storybook';
 import { useState, useEffect } from 'react';
+import { Navbar } from './components/Navbar';
 
 function App() {
   const [selected, setSelected] = useState('Last 5 minutes');
@@ -45,6 +46,7 @@ function App() {
     <BrowserRouter>
       <div className="App bg-white">
         <Routes>
+        <Route path='/' element={<Navbar/>}/>
           <Route path="/logs" element={<Logs timeRange={timeRange} selected={selected} setSelected={setSelected} />} />
           <Route path="/metrics" element={<Metrics timeRange={timeRange} selected={selected} setSelected={setSelected}  />} />
           <Route path="/storybook/*" element={<Storybook />} />
