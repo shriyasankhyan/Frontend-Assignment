@@ -46,7 +46,7 @@ function App() {
     <BrowserRouter>
       <div className="App bg-white">
         <Routes>
-        <Route path='/' element={<Navbar/>}/>
+        <Route path='/' element={<Navbar selected={selected} setSelected={setSelected}/>}/>
           <Route path="/logs" element={<Logs timeRange={timeRange} selected={selected} setSelected={setSelected} />} />
           <Route path="/metrics" element={<Metrics timeRange={timeRange} selected={selected} setSelected={setSelected}  />} />
           <Route path="/storybook/*" element={<Storybook />} />
