@@ -1,6 +1,5 @@
 import React from 'react';
 import Metrics from '../components/Metrics';
-import './storybook.css';
 
 export default {
   title: 'Components/Metrics',

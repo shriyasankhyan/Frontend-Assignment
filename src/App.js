@@ -1,5 +1,4 @@
 import './App.css';
-import { Navbar } from './components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Logs from './components/Logs';
 import Metrics from './components/Metrics';
@@ -45,11 +44,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App bg-white">
-        <Navbar selected={selected} setSelected={setSelected} />
         <Routes>
-          <Route path="/logs" element={<Logs timeRange={timeRange} />} />
-          <Route path="/metrics" element={<Metrics timeRange={timeRange} />} />
-          <Route path="/storybook" element={<Storybook />} />
+          <Route path="/logs" element={<Logs timeRange={timeRange} selected={selected} setSelected={setSelected} />} />
+          <Route path="/metrics" element={<Metrics timeRange={timeRange} selected={selected} setSelected={setSelected}  />} />
+          <Route path="/storybook/*" element={<Storybook />} />
         </Routes>
       </div>
     </BrowserRouter>

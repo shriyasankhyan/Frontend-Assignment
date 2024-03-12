@@ -4,8 +4,9 @@ import {MimicMetrics} from "../api/api-mimic";
 import LineChart  from './subcomponents/LineChart';
 import FormattedDate from './subcomponents/FormattedDate';
 import AreaChart from './subcomponents/AreaChart';
+import { Navbar } from './Navbar';
 
-const Metrics = ({timeRange}) => {
+const Metrics = ({timeRange, selected, setSelected}) => {
 
   const [metrics, setMetrics] = useState([]);
 
@@ -23,6 +24,8 @@ const Metrics = ({timeRange}) => {
 
 
   return (
+    <>
+    <Navbar selected={selected} setSelected={setSelected}/>
     <div className='bg-white'>
     <div className="border border-[#CEE0F8] m-5 rounded">
     <div className='border border-[#CEE0F8] rounded flex items-center h-20 p-4'>
@@ -41,6 +44,7 @@ const Metrics = ({timeRange}) => {
       </div>
     </div>
     </div>
+    </>
   );
 };
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { MimicLogs } from '../api/api-mimic';
 import FormattedDate from './subcomponents/FormattedDate';
+import { Navbar } from './Navbar';
 
-const Logs = ({ timeRange }) => {
+const Logs = ({ timeRange, selected, setSelected }) => {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newLogsCount, setNewLogsCount] = useState(0);
@@ -77,6 +78,8 @@ const Logs = ({ timeRange }) => {
 
 
   return (
+    <>
+    <Navbar selected={selected} setSelected={setSelected}/>
     <div className="flex flex-col h-screen">
       <div className='h-10 sticky top-0 bg-white z-10 text-right mr-5'>
         <h2 className="text-[#1C2A42] text-xl font-medium">
@@ -122,6 +125,7 @@ const Logs = ({ timeRange }) => {
         </div>}
       </div>
     </div>
+    </>
   );
 };
 
