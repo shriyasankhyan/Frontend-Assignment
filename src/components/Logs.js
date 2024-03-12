@@ -113,7 +113,7 @@ const Logs = ({ timeRange }) => {
           <div ref={logsEndRef} />
         </ul>
        
-        { newLogsCount > 0 && <div onClick={() => scrollToBottom()} className="flex items-center justify-end absolute bottom-20 right-14 p-2 bg-[#4338CA] text-[#E0ECFD]">
+        { newLogsCount > 0 && <div onClick={() => scrollToBottom()} className="cursor-pointer flex items-center justify-end absolute bottom-20 right-14 p-2 bg-[#4338CA] text-[#E0ECFD]">
           <img src="/Assets/Sidepane/Spinner.svg" alt="Loading" />
           <p className='ml-2'>
             {newLogsCount} new logs
