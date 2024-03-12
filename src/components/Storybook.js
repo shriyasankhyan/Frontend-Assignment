@@ -71,10 +71,11 @@ const StoryRenderer = ({ stories }) => (
     {stories.map((Story, index) => (
       <div key={index}>
         <h2>{Story.name}</h2>
-        <Story />
+        <Story args={Story.args} />
       </div>
     ))}
   </div>
 );
+
 
 export default Storybook;
