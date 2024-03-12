@@ -8,13 +8,10 @@ const mockTimeRange = {
 };
 
 export default {
-  title: 'FormattedDate',
+  title: 'YourComponent',
   component: FormattedDate,
 };
 
-const Template = (args) => <FormattedDate {...args} />;
+const Template = () => <FormattedDate timeRange={mockTimeRange} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  timeRange: mockTimeRange,
-};

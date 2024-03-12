@@ -11,18 +11,18 @@ export default {
   component: DropDownItem,
 };
 
-const Template = (args) => <DropDownItem {...args} />;
+export const Default = () => (
+  <DropDownItem
+    text="Last 5 minutes"
+    setSelected={mockSetSelected}
+    setIsOpen={() => {}}
+  />
+);
 
-export const Default = Template.bind({});
-Default.args = {
-  text: 'Last 5 minutes',
-  setSelected: mockSetSelected,
-  setIsOpen: () => {},
-};
-
-export const Hover = Template.bind({});
-Hover.args = {
-  text: 'Last 15 minutes',
-  setSelected: mockSetSelected,
-  setIsOpen: () => {},
-};
+export const Hover = () => (
+  <DropDownItem
+    text="Last 15 minutes"
+    setSelected={mockSetSelected}
+    setIsOpen={() => {}}
+  />
+);

@@ -1,3 +1,4 @@
+// Dropdown.stories.js
 import React from 'react';
 import Dropdown from '../components/subcomponents/Dropdown';
 import './storybook.css';
@@ -11,17 +12,17 @@ export default {
   component: Dropdown,
 };
 
-const Template = (args) => <Dropdown {...args} />;
+export const Default = () => (
+  <Dropdown
+    selected="Last 5 minutes"
+    setSelected={mockSetSelected}
+  />
+);
 
-export const Default = Template.bind({});
-Default.args = {
-  selected: 'Last 5 minutes',
-  setSelected: mockSetSelected,
-};
-
-export const Open = Template.bind({});
-Open.args = {
-  selected: 'Last 15 minutes',
-  setSelected: mockSetSelected,
-  isOpen: true,
-};
+export const Open = () => (
+  <Dropdown
+    selected="Last 15 minutes"
+    setSelected={mockSetSelected}
+    isOpen={true}
+  />
+);

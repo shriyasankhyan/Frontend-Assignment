@@ -12,9 +12,6 @@ const mockTimeRange = {
   endTs: Date.now(),
 };
 
-const Template = (args) => <Logs {...args} />;
+const Template = () => <Logs timeRange={mockTimeRange} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  timeRange: mockTimeRange,
-};
