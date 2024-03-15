@@ -38,7 +38,7 @@ const AreaChart = ({ metric }) => {
             label: line.name,
             data: line.values.map((value) => value.value),
             borderColor: getColor(line.name),
-            backgroundColor:  getColor(line.name) + '40' ,
+            backgroundColor:  getColor(line.name) + '50' ,
             borderWidth: 2,
             fill: 'start',  // Fill area from dataset index - 1 to index
             pointRadius: 0,
