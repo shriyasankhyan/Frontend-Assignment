@@ -36,7 +36,6 @@ const Logs = ({ timeRange, selected, setSelected }) => {
         console.error('Error fetching logs:', error);
       } finally {
         setLoading(false);
-        scrollToBottom();
       }
     };
   
@@ -68,9 +67,11 @@ const Logs = ({ timeRange, selected, setSelected }) => {
       }
     };
     setLogs([]);
+    logsContainerRef.current.addEventListener('scroll', handleScroll);
     fetchData();
     const unsubscribe = MimicLogs.subscribeToLiveLogs(handleLiveLog);
-    logsContainerRef.current.addEventListener('scroll', handleScroll);
+    scrollToBottom();
+  
 
     return () => {
       unsubscribe();
