@@ -46,8 +46,8 @@ const Logs = ({ timeRange, selected, setSelected }) => {
    
     const handleScroll = () => {
       const isAtTop =
-        logsContainerRef.current.scrollTop <= 20 &&
-        logsContainerRef.current.scrollHeight > logsContainerRef.current.clientHeight-50;
+        logsContainerRef.current.scrollTop <= 100 &&
+        logsContainerRef.current.scrollHeight > logsContainerRef.current.clientHeight-100;
       if (isAtTop) {
         fetchData();
       }
