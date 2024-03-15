@@ -36,6 +36,7 @@ const Logs = ({ timeRange, selected, setSelected }) => {
         console.error('Error fetching logs:', error);
       } finally {
         setLoading(false);
+        scrollToBottom();
       }
     };
   
