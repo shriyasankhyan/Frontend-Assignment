@@ -41,7 +41,7 @@ const LineChart = ({ metric }) => {
             borderColor: getColor(line.name),
             pointRadius : 0,
             pointHoverRadius : 5, 
-            pointHitRadius : 25,
+            pointHitRadius : 10,
           })),
         }}
         options={{

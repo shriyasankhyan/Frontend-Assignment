@@ -43,7 +43,7 @@ const AreaChart = ({ metric }) => {
             fill: 'start',  // Fill area from dataset index - 1 to index
             pointRadius: 0,
             pointHoverRadius: 5,
-            pointHitRadius : 25
+            pointHitRadius : 10
           })),
         }}
         options={{
