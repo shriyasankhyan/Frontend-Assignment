@@ -60,12 +60,7 @@ const AreaChart = ({ metric }) => {
             x: {
               title: {
                 display: true,
-              },
-              ticks: {
-                callback: function (value, index, values) {
-                  return formatTime(lines[0].values[index].timestamp);
-                },
-              },
+              }
             },
             y: {
               position: 'right',

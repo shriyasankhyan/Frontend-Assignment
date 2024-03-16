@@ -108,12 +108,7 @@ const LineChart = ({ metric }) => {
             x: {
               title: {
                 display: true,
-              },
-              callback: function(value, index, values) {
-                 const lineIndex = this.chart.data.datasets[index].dataIndex;
-                 const lineTimestamp = metric.graphLines[lineIndex].values[index].timestamp;
-                 return formatTime(lineTimestamp);
-                }
+              }
             },
             y :{
                 position : 'right'
