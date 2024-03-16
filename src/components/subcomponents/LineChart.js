@@ -46,7 +46,6 @@ const LineChart = ({ metric }) => {
   const [highlightData, setHighlightData] = useState([]);
 
   const handleClick = (e) =>{
-    console.log(e)
     if(!getElementAtEvent(chartRef.current,e)[0] ){
       return;
     }
