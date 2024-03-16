@@ -105,11 +105,6 @@ const LineChart = ({ metric }) => {
             }
           },
           scales: {
-            x: {
-              title: {
-                display: true,
-              }
-            },
             y :{
                 position : 'right'
             }

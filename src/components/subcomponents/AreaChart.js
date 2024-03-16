@@ -57,11 +57,6 @@ const AreaChart = ({ metric }) => {
             },
           },
           scales: {
-            x: {
-              title: {
-                display: true,
-              }
-            },
             y: {
               position: 'right',
             },
