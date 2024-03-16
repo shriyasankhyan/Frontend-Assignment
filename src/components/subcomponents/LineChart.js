@@ -42,60 +42,65 @@ const LineChart = ({ metric }) => {
     pointHitRadius : 10,
   }));
 
-  const [highlightedPoint, setHighlightedPoint] = useState();
-  const [highlightData, setHighlightData] = useState([]);
+  // const [highlightedPoint, setHighlightedPoint] = useState();
+  // const [highlightData, setHighlightData] = useState([]);
 
-  const handleClick = (e) =>{
-    if(!getElementAtEvent(chartRef.current,e)[0] ){
-      return;
-    }
+  // const [minInd, setMinInd] = useState(labels.length-1);
+  // const [maxInd, setMaxInd] = useState(0);
 
-    const {datasetIndex, index} = getElementAtEvent(chartRef.current, e)[0];
-    const points = [];
+  // const handleClick = (e) =>{
+  //   if(!getElementAtEvent(chartRef.current,e)[0] ){
+  //     return;
+  //   }
+
+  //   const {datasetIndex, index} = getElementAtEvent(chartRef.current, e)[0];
+  //   const points = [];
    
-    if(highlightedPoint &&  highlightedPoint.datasetIndex === datasetIndex && highlightedPoint.index !== index){
-    }else{
-      setHighlightedPoint({datasetIndex, index});
-      const newHighlightData = {
-        label: "Selected region",
-        data:  [{x: metric.graphLines[datasetIndex].values[index].timestamp,
-        y: metric.graphLines[datasetIndex].values[index].value}],
-        backgroundColor: "#F97316",
-        borderColor: '#F97316',
-        pointRadius: 5,
-        fill: true
-      };
-      // setHighlightData([newHighlightData]);
-      return;
-    }
+  //   if(highlightedPoint &&  highlightedPoint.datasetIndex === datasetIndex && highlightedPoint.index !== index){
+  //   }else{
+  //     setHighlightedPoint({datasetIndex, index});
+  //     const newHighlightData = {
+  //       label: "Selected region",
+  //       data:  [{x: metric.graphLines[datasetIndex].values[index].timestamp,
+  //       y: metric.graphLines[datasetIndex].values[index].value}],
+  //       backgroundColor: "#F97316",
+  //       borderColor: '#F97316',
+  //       pointRadius: 5,
+  //       fill: true
+  //     };
+  //     highlightedPoint?.index ? setMinInd(Math.min(highlightedPoint?.index , index)) : setMinInd(index);
+  //     highlightedPoint?.index ? setMaxInd(Math.min(highlightedPoint?.index , index)) : setMaxInd(index);
+  //     setHighlightData([newHighlightData]);
+  //     return;
+  //   }
 
-    const minInd = Math.min(highlightedPoint?.index , index);
-    const maxInd = Math.max(highlightedPoint?.index, index);
+  //   setMinInd(Math.min(highlightedPoint?.index , index));
+  //   setMaxInd(Math.max(highlightedPoint?.index, index));
 
 
-    for(let i = minInd; i <= maxInd ; i++){
-      points.push({datasetIndex, index : i, x : metric.graphLines[datasetIndex].values[i].timestamp})
-    }
+  //   for(let i = minInd; i <= maxInd ; i++){
+  //     points.push({datasetIndex, index : i, x : metric.graphLines[datasetIndex].values[i].timestamp})
+  //   }
 
-    setHighlightedPoint({datasetIndex, index});
+  //   setHighlightedPoint({datasetIndex, index});
 
-    const newData  = points.map(point => ({
-      x: metric.graphLines[point.datasetIndex].values[point.index].timestamp,
-      y: metric.graphLines[point.datasetIndex].values[point.index].value
-    }));
+  //   const newData  = points.map(point => ({
+  //     x: metric.graphLines[point.datasetIndex].values[point.index].timestamp,
+  //     y: metric.graphLines[point.datasetIndex].values[point.index].value
+  //   }));
 
-    const newHighlightData = {
-      label: "Selected region",
-      data: newData,
-      backgroundColor: "#F97316",
-      borderColor: '#F97316',
-      pointRadius: 5,
-      fill: true
-    };
+  //   const newHighlightData = {
+  //     label: "Selected region",
+  //     data: newData,
+  //     backgroundColor: "#F97316",
+  //     borderColor: '#F97316',
+  //     pointRadius: 5,
+  //     fill: true
+  //   };
 
-    // setHighlightData([newHighlightData]);
+  //   setHighlightData([newHighlightData]);
 
-    }
+  //   }
 
 
 
@@ -105,11 +110,12 @@ const LineChart = ({ metric }) => {
         ref={chartRef}
         data={{
           labels: labels,
-          datasets:[ ...linesData, ...highlightData],
+          datasets : linesData
+          // datasets:[ ...linesData, ...highlightData],
         }}
-        onClick =  {(e) =>{
-          handleClick(e);
-        }}
+        // onClick =  {(e) =>{
+        //   handleClick(e);
+        // }}
         options={{
             plugins: {
             title: {
@@ -124,9 +130,10 @@ const LineChart = ({ metric }) => {
             y :{
                 position : 'right'
             },
-            x : {
-              min : (highlightData.length >= 2) ? highlightData[0].data[0].x : 0,
-            }
+            // x : {
+            //   min : (highlightData.length >= 2)?  minInd : 0,
+            //   max : (highlightData.length >= 2) ? maxInd : labels.length-1,
+            // }
           }
         }}
       />
