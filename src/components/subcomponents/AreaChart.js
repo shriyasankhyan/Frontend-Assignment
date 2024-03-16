@@ -62,8 +62,6 @@ const AreaChart = ({ metric }) => {
                 display: true,
               },
               ticks: {
-                autoSkip: true,
-                maxTicksLimit: 10,
                 callback: function (value, index, values) {
                   return formatTime(lines[0].values[index].timestamp);
                 },
