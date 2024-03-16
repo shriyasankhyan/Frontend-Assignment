@@ -29,7 +29,7 @@ const LineChart = ({ metric }) => {
     else return "#059669";
   }
 
-  const [linesData, setLinesData] = useState(metric.graphLines.map((line) => ({
+  const linesData = metric.graphLines.map((line) => ({
     label: line.name,
     data: line.values.map(value => ({
       x: value.timestamp, 
@@ -40,30 +40,46 @@ const LineChart = ({ metric }) => {
     pointRadius : 0,
     pointHoverRadius : 5, 
     pointHitRadius : 10,
-  })));
+  }));
 
   const [highlightedPoint, setHighlightedPoint] = useState();
   const [highlightData, setHighlightData] = useState([]);
 
   const handleClick = (e) =>{
+    console.log(e)
     if(!getElementAtEvent(chartRef.current,e)[0] ){
       return;
     }
 
     const {datasetIndex, index} = getElementAtEvent(chartRef.current, e)[0];
-    const newPoint = {
-      datasetIndex, index
-    };
-
     const points = [];
    
     if(highlightedPoint &&  highlightedPoint.datasetIndex === datasetIndex && highlightedPoint.index !== index){
-      points.push(highlightedPoint);
+    }else{
+      setHighlightedPoint({datasetIndex, index});
+      const newHighlightData = {
+        label: "Selected region",
+        data:  [{x: metric.graphLines[datasetIndex].values[index].timestamp,
+        y: metric.graphLines[datasetIndex].values[index].value}],
+        backgroundColor: "#F97316",
+        borderColor: '#F97316',
+        pointRadius: 5,
+        fill: true
+      };
+      // setHighlightData([newHighlightData]);
+      return;
     }
 
-    points.push(newPoint);
-    setHighlightedPoint(newPoint);
-    
+    const minInd = Math.min(highlightedPoint?.index , index);
+    const maxInd = Math.max(highlightedPoint?.index, index);
+
+
+    for(let i = minInd; i <= maxInd ; i++){
+      points.push({datasetIndex, index : i, x : metric.graphLines[datasetIndex].values[i].timestamp})
+    }
+
+    setHighlightedPoint({datasetIndex, index});
+
     const newData  = points.map(point => ({
       x: metric.graphLines[point.datasetIndex].values[point.index].timestamp,
       y: metric.graphLines[point.datasetIndex].values[point.index].value
@@ -77,8 +93,9 @@ const LineChart = ({ metric }) => {
       pointRadius: 5,
       fill: true
     };
-    
+
     // setHighlightData([newHighlightData]);
+
     }
 
 
@@ -107,6 +124,9 @@ const LineChart = ({ metric }) => {
           scales: {
             y :{
                 position : 'right'
+            },
+            x : {
+              min : (highlightData.length >= 2) ? highlightData[0].data[0].x : 0,
             }
           }
         }}
