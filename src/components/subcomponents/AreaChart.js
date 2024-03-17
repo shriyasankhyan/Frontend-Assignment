@@ -21,30 +21,30 @@ const AreaChart = ({ metric }) => {
     return `${hours}:${minutes}`;
   };
 
-  const lines = metric.graphLines;
-
   const getColor = (name) => {
     if (name === "Used" || name === "Write") return "#DC2626";
     else if (name === "Read" || name === "Requested") return "#2563EB";
     else return "#059669";
   };
 
+  const linesData = metric.graphLines.map((line) => ({
+    label: line.name,
+    data: line.values.map((value) => value.value),
+    borderColor: getColor(line.name),
+    backgroundColor:  getColor(line.name) + '50' ,
+    borderWidth: 2,
+    fill: 'start', 
+    pointRadius: 0,
+    pointHoverRadius: 5,
+    pointHitRadius : 10
+  }));
+
   return (
     <div className='w-[45%] p-4 mx-auto my-5 bg-white border border-[#CEE0F8] rounded'>
       <Line
         data={{
-          labels: lines[0].values.map((value) => formatTime(value.timestamp)),
-          datasets: lines.map((line, index) => ({
-            label: line.name,
-            data: line.values.map((value) => value.value),
-            borderColor: getColor(line.name),
-            backgroundColor:  getColor(line.name) + '50' ,
-            borderWidth: 2,
-            fill: 'start', 
-            pointRadius: 0,
-            pointHoverRadius: 5,
-            pointHitRadius : 10
-          })),
+          labels: metric.graphLines[0].values.map((value) => formatTime(value.timestamp)),
+          datasets: linesData,
         }}
         options={{
           plugins: {
