@@ -53,7 +53,6 @@ const StoryRenderer = ({ stories }) => (
   <div>
     {stories.map((Story, index) => (
       <div key={index}>
-        <h2>{Story.name}</h2>
         <Story args={Story.args} />
       </div>
     ))}
