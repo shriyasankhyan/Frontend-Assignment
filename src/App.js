@@ -5,7 +5,7 @@ import Metrics from './components/Metrics';
 import Storybook from './components/Storybook';
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
-import { getTimeRange } from './TimeRange';
+import {getTimeRange} from "./Helper Function/TimeRange"
 
 function App() {
   const [selected, setSelected] = useState('Last 5 minutes');
