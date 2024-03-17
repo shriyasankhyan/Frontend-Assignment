@@ -15,5 +15,12 @@ export default {
   ],
 };
 
-export const Metrics = () => <NavbarItem text="Metrics" url="/metrics" />;
-export const Logs = () => <NavbarItem text="Logs" url="/logs" />;
+export const Metrics = () => <div className='m-10 text-xl '>
+<h2>Metrics</h2>
+<NavbarItem text="Metrics" url="/metrics" />
+</div>
+
+export const Logs = () => <div className='m-10 text-xl '>
+<h2>Logs</h2>
+<NavbarItem text="Logs" url="/logs" />
+</div>
