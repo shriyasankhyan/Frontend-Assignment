@@ -5,6 +5,7 @@ import Metrics from './components/Metrics';
 import Storybook from './components/Storybook';
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
+import { getTimeRange } from './TimeRange';
 
 function App() {
   const [selected, setSelected] = useState('Last 5 minutes');
@@ -14,32 +15,7 @@ function App() {
   });
 
   useEffect(() => {
-    const now = Date.now();
-    const calculateTimeRange = (minutes) => ({
-      startTs: now - minutes * 60 * 1000,
-      endTs: now,
-    });
-
-    switch (selected) {
-      case 'Last 15 minutes':
-        setTimeRange(calculateTimeRange(15));
-        break;
-      case 'Last 30 minutes':
-        setTimeRange(calculateTimeRange(30));
-        break;
-      case 'Last 1 hour':
-        setTimeRange(calculateTimeRange(60));
-        break;
-      case 'Last 3 hours':
-        setTimeRange(calculateTimeRange(180));
-        break;
-      case 'Last 6 hours':
-        setTimeRange(calculateTimeRange(360));
-        break;
-      default:
-        setTimeRange(calculateTimeRange(5)); 
-        break;
-    }
+    setTimeRange(getTimeRange(selected))
   }, [selected]);
 
   return (
