@@ -27,6 +27,8 @@ const AreaChart = ({ metric }) => {
     else return "#059669";
   };
 
+  const labels =  metric.graphLines[0].values.map((value) => formatTime(value.timestamp));
+
   const linesData = metric.graphLines.map((line) => ({
     label: line.name,
     data: line.values.map((value) => value.value),
@@ -43,7 +45,7 @@ const AreaChart = ({ metric }) => {
     <div className='w-[45%] p-4 mx-auto my-5 bg-white border border-[#CEE0F8] rounded'>
       <Line
         data={{
-          labels: metric.graphLines[0].values.map((value) => formatTime(value.timestamp)),
+          labels: labels,
           datasets: linesData,
         }}
         options={{
