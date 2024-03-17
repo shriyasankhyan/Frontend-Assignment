@@ -22,7 +22,7 @@ const Dropdown = ({selected, setSelected}) => {
         <div id="dropdown" className="bg-white absolute z-50 top-full left-1/2 transform -translate-x-1/2 w-40 font-semibold border-[#BBD2F1] border-[0.3px] rounded">
           <ul className="text-sm text-left justify-center" aria-labelledby="dropdownDefaultButton">
           {options.map(option => {
-            return <DropDownItem text={option} setSelected={setSelected} setIsOpen={setIsOpen}/>
+            return <DropDownItem key={option} text={option} setSelected={setSelected} setIsOpen={setIsOpen}/>
              })}
           </ul>
         </div>
