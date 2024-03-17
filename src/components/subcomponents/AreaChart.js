@@ -40,7 +40,7 @@ const AreaChart = ({ metric }) => {
             borderColor: getColor(line.name),
             backgroundColor:  getColor(line.name) + '50' ,
             borderWidth: 2,
-            fill: 'start',  // Fill area from dataset index - 1 to index
+            fill: 'start', 
             pointRadius: 0,
             pointHoverRadius: 5,
             pointHitRadius : 10

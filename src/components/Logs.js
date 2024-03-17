@@ -47,7 +47,7 @@ const Logs = ({ timeRange, selected, setSelected }) => {
     const handleScroll = () => {
       const isAtTop =
         logsContainerRef?.current?.scrollTop <= 100 &&
-        logsContainerRef.current.scrollHeight > logsContainerRef.current.clientHeight-100;
+        logsContainerRef.current.scrollHeight > logsContainerRef?.current?.clientHeight-100;
       if (isAtTop) {
         fetchData();
       }
@@ -56,8 +56,8 @@ const Logs = ({ timeRange, selected, setSelected }) => {
     const handleLiveLog = (nextLog) => {
       setLogs(prevLogs => [...prevLogs, nextLog]);
       const isAtBottom =
-        logsContainerRef?.current?.scrollTop + logsContainerRef.current.clientHeight >=
-        logsContainerRef.current.scrollHeight - 50;
+        logsContainerRef?.current?.scrollTop + logsContainerRef?.current?.clientHeight >=
+        logsContainerRef?.current?.scrollHeight - 50;
   
       if (isAtBottom) {
         setNewLogsCount(0);

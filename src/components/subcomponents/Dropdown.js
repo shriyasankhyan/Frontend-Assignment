@@ -8,6 +8,8 @@ const Dropdown = ({selected, setSelected}) => {
     setIsOpen(!isOpen);
   };
 
+  const options = ["Last 5 minutes", "Last 15 minutes", "Last 30 minutes", "Last 1 hour", "Last 6 hours"]
+
   return (
     <div className="relative z-50 my-4 list-none rounded-lg border border-[#BBD2F1]" id="language-dropdown-menu">
       <button onClick={toggleDropdown} id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="w-40 text-[#3E5680] focus:ring-2 focus:outline-none focus:ring-[#BBD2F1] font-medium rounded-lg text-sm px-4 py-1 text-center inline-flex items-center relative z-10" type="button">
@@ -19,12 +21,9 @@ const Dropdown = ({selected, setSelected}) => {
       {isOpen && (
         <div id="dropdown" className="bg-white absolute z-50 top-full left-1/2 transform -translate-x-1/2 w-40 font-semibold border-[#BBD2F1] border-[0.3px] rounded">
           <ul className="text-sm text-left justify-center" aria-labelledby="dropdownDefaultButton">
-          <DropDownItem text="Last 5 minutes" setSelected={setSelected} setIsOpen={setIsOpen}/>
-          <DropDownItem text="Last 15 minutes" setSelected={setSelected} setIsOpen={setIsOpen}/>
-          <DropDownItem text="Last 30 minutes" setSelected={setSelected} setIsOpen={setIsOpen}/>
-          <DropDownItem text="Last 1 hour" setSelected={setSelected} setIsOpen={setIsOpen}/>
-          <DropDownItem text="Last 3 hours" setSelected={setSelected} setIsOpen={setIsOpen}/>
-          <DropDownItem text="Last 6 hours" setSelected={setSelected} setIsOpen={setIsOpen}/>
+          {options.map(option => {
+            return <DropDownItem text={option} setSelected={setSelected} setIsOpen={setIsOpen}/>
+             })}
           </ul>
         </div>
       )}
