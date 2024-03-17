@@ -1,4 +1,3 @@
-// Dropdown.stories.js
 import React from 'react';
 import Dropdown from '../components/subcomponents/Dropdown';
 import './storybook.css';
