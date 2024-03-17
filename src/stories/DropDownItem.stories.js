@@ -12,17 +12,12 @@ export default {
 };
 
 export const Default = () => (
+  <div className='m-10 text-xl '>
+  <h2>Dropdown Item</h2>
   <DropDownItem
     text="Last 5 minutes"
     setSelected={mockSetSelected}
     setIsOpen={() => {}}
   />
-);
-
-export const Hover = () => (
-  <DropDownItem
-    text="Last 15 minutes"
-    setSelected={mockSetSelected}
-    setIsOpen={() => {}}
-  />
+</div>
 );

@@ -16,4 +16,10 @@ export default {
   ],
 };
 
-export const Default = () => <Navbar selected="Last 5 minutes" setSelected={action('setSelected')} />;
+const Template = () => ( <div className='m-10 text-xl '>
+    <h2>Navbar</h2>
+    <Navbar selected="Last 5 minutes" setSelected={action('setSelected')}/>
+  </div>
+);
+
+export const Default = Template.bind({});

@@ -13,16 +13,12 @@ export default {
 };
 
 export const Default = () => (
-  <Dropdown
+  <div className='m-10 text-xl '>
+    <h2>Dropdown Stories</h2>
+    <Dropdown
     selected="Last 5 minutes"
     setSelected={mockSetSelected}
   />
+  </div>
 );
 
-export const Open = () => (
-  <Dropdown
-    selected="Last 15 minutes"
-    setSelected={mockSetSelected}
-    isOpen={true}
-  />
-);
