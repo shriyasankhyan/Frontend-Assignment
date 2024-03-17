@@ -1,8 +1,6 @@
-const now = Date.now();
-
 const calculateTimeRange = (minutes) => ({
-    startTs: now - minutes * 60 * 1000,
-    endTs: now,
+    startTs: Date.now() - minutes * 60 * 1000,
+    endTs: Date.now()
 });
 
 const getTimeRange = (selected) =>{
